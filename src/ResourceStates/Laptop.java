@@ -1,9 +1,11 @@
 package ResourceStates;
 
 import Booking.BookingStrategy;
+import java.io.Serializable;
 
-public class Laptop implements IResource{
-
+public class Laptop implements IResource, Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private ResourceState state;
 	private BookingStrategy bookingStrategy;

@@ -1,7 +1,10 @@
 package Booking;
 
-public class RoomBookingStrategy implements BookingStrategy{
+import java.io.Serializable;
 
+public class RoomBookingStrategy implements BookingStrategy, Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	public boolean book(String resourceId, String userId) {
 		System.out.println("Booking study room " + resourceId 

@@ -1,5 +1,6 @@
 package ResourceStates;
 import Booking.BookingStrategy;
+//import java.io.Serializable;
 
 public interface IResource {
 	public String getName();
