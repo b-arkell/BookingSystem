@@ -1,6 +1,9 @@
 package ResourceStates;
 
-public class AvailableState implements ResourceState{
+import java.io.Serializable;
+
+public class AvailableState implements ResourceState, Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Override	// changed from resource to Iresource 
 	public void book(IResource resource, String userId) {
