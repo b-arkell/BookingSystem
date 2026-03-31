@@ -1,9 +1,8 @@
 package ResourceStates;
 
-
 import Booking.BookingStrategy;
 
-public class Resource implements IResource{
+public class Laptop implements IResource{
 
 	private String name;
 	private ResourceState state;
@@ -17,7 +16,7 @@ public class Resource implements IResource{
 //		this.bookingStrategy = new RoomBookingstrategy();
 //	}
 	
-	public Resource(String name, BookingStrategy strategy) {
+	public Laptop(String name, BookingStrategy strategy) {
 		this.name = name;
 		this.state = new AvailableState();
 		this.bookingStrategy = strategy;
@@ -64,3 +63,4 @@ public class Resource implements IResource{
 		System.out.println("Displaying Resource");
 	}
 }
+

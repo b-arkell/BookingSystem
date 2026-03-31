@@ -3,7 +3,7 @@ package ResourceStates;
 
 import Booking.BookingStrategy;
 
-public class Resource implements IResource{
+public class Room implements IResource{
 
 	private String name;
 	private ResourceState state;
@@ -17,7 +17,7 @@ public class Resource implements IResource{
 //		this.bookingStrategy = new RoomBookingstrategy();
 //	}
 	
-	public Resource(String name, BookingStrategy strategy) {
+	public Room(String name, BookingStrategy strategy) {
 		this.name = name;
 		this.state = new AvailableState();
 		this.bookingStrategy = strategy;
