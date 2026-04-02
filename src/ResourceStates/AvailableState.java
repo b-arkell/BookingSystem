@@ -11,6 +11,7 @@ public class AvailableState implements ResourceState, Serializable{
 		resource.setState(new BookedState());
 		System.out.println("Booking " + resource.getName() + " for " + userId);
 	}
+	
 
 	@Override	// changed from resource to Iresource 
 	public void release(IResource resource) {
