@@ -2,13 +2,14 @@ package Booking;
 
 //import ResourceStates.Resource;
 import ResourceStates.IResource;
+import Scheduling.*;
 
 public class BookingService {
 
 	// changed from resource to Iresource 
-	public void BookResource(IResource resource, String userId) {
+	public void BookResource(IResource resource, String userId, TimeSlot slot) {
 		System.out.println("Processing booking for " + resource.getName());
-		resource.book(userId);
+		resource.book(userId, slot);
 	}
 
 	// changed from resource to Iresource 

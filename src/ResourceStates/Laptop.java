@@ -1,6 +1,7 @@
 package ResourceStates;
 
 import Booking.BookingStrategy;
+import Scheduling.*;
 import java.io.Serializable;
 
 public class Laptop implements IResource, Serializable{
@@ -46,8 +47,8 @@ public class Laptop implements IResource, Serializable{
 	}
 	
 	@Override
-	public void book(String userId) {
-		state.book(this, userId);
+	public void book(String userId, TimeSlot slot) {
+		state.book(this, userId, slot);
 	}
 	
 	@Override

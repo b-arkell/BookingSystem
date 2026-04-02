@@ -1,17 +1,23 @@
 package Booking;
 
 import java.io.Serializable;
+import Scheduling.*;
 
 public class RoomBookingStrategy implements BookingStrategy, Serializable{
 	private static final long serialVersionUID = 1L;
+	private Scheduler scheduler;
+	
+	public RoomBookingStrategy(Scheduler scheduler) {
+		this.scheduler = scheduler;
+	}
 	
 	@Override
-	public boolean book(String resourceId, String userId) {
-		System.out.println("Booking study room " + resourceId 
-							+ "for user " + userId + "(Placeholder amount of time)");
+	public boolean book(String resourceId, String userId, TimeSlot slot) {
+		System.out.println("Request for: " + resourceId 
+							+ " for user " + userId + " Timeslot: Start= " + slot.getStart() + " End= " + slot.getEnd());
 		
-		// logic that would check if a room is available
+		scheduler.addPending(resourceId, slot);
 		return true;
-	}
+	}// can return true/false if moving to an automated system 
 
 }
