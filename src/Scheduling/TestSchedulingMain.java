@@ -42,7 +42,7 @@ public class TestSchedulingMain {
 		
 		
 		// create resource
-		IResource room = ResourceFactory.createResource("Study Room 101",new RoomBookingStrategy());
+		IResource room = ResourceFactory.createResource("Study Room 101",new RoomBookingStrategy(sche));
 		
 		// create time slot			// int year, int month, int dayOfMonth, int hour, int minute
 		TimeSlot slot = new TimeSlot(LocalDateTime.of(2026,4, 1, 10, 0), LocalDateTime.of(2026,  4, 1, 12, 0), user1.getName());

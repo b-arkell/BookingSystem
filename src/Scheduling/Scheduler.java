@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import ResourceStates.IResource;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -42,10 +45,11 @@ public class Scheduler implements Serializable{
 	}
 	
 	// move from pending to approved
-	public void approve(String resourceId, TimeSlot slot) {
-		approved.computeIfAbsent(resourceId,  k -> new ArrayList<>()).add(slot);
-		pending.getOrDefault(resourceId, new ArrayList<>()).remove(slot);
-		System.out.println("[Scheduler] Moving resource: " + resourceId + " from Pending to Approved...");
+	public void approve(String room1, TimeSlot slot) {
+		//approved.computeIfAbsent(room1,  k -> new ArrayList<>()).add(slot);
+		approved.computeIfAbsent(room1,  k -> new ArrayList<>()).add(slot);
+		pending.getOrDefault(room1, new ArrayList<>()).remove(slot);
+		System.out.println("[Scheduler] Moving resource: " + room1 + " from Pending to Approved...");
 	}
 	
 	// remove from pending/reject

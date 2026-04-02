@@ -1,5 +1,6 @@
 package ResourceStates;
 
+import Scheduling.*;
 
 import Booking.BookingStrategy;
 import java.io.Serializable;
@@ -47,8 +48,8 @@ public class Room implements IResource, Serializable{
 	}
 	
 	@Override
-	public void book(String userId) {
-		state.book(this, userId);
+	public void book(String userId, TimeSlot slot) {
+		state.book(this, userId, slot);
 	}
 	
 	@Override
