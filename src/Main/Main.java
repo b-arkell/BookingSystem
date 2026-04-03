@@ -1,15 +1,3 @@
-//package Main;
-//
-//public class Main {
-//
-//	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//		System.out.println("Hello world");
-//	}
-//
-//}
-
-
 package Main;
 
 import java.io.File;
@@ -30,8 +18,8 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		BookingService bookingService = new BookingService();
 		Scheduler scheduler = new Scheduler();
-		User user1 = new User();
-		User user2 = new User();
+		User user1 = new User("user1", "SammyBoy");
+		User user2 = new User("user2", "Brobody");
 		
 		
 		File file = new File("scheduler.dat");
@@ -85,14 +73,6 @@ public class Main {
 					// DEMO PART 1
 					// ----------------
 					// User1 logs in
-					File user1File = new File("user1.dat");
-					if (!user1File.exists() || user1File.length() == 0) {
-						System.out.println("No Previous User Data. Starting Fresh user file...");
-						user1.setUserID("007");
-						user1.setName("Samwise");
-					}else {
-						user1.loadFromFile("user1.dat");			
-					}
 					System.out.println("___User1 Logged in: " + user1.getName() + "___");
 					
 					// - books room1	- in the future, this would we a helper function.
@@ -141,14 +121,6 @@ public class Main {
 					// DEMO PART 2
 					// ----------------		
 					// User2 logs in
-					File user2File = new File("userj.dat");
-					if (!user2File.exists() || user2File.length() == 0) {
-						System.out.println("No Previous User Data. Starting Fresh user file...");
-						user2.setUserID("420");
-						user2.setName("Brodilicious");
-					}else {
-						user2.loadFromFile("user2.dat");			
-					}
 					System.out.println("___User2 Logged in: " + user2.getName() + "___");
 					
 					// - books room1
