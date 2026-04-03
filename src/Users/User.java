@@ -47,6 +47,30 @@ public class User implements Serializable {
 		return Drafts;
 	}
 	
+	public User(String userID, String name) {
+		this.userID = userID;
+		this.name = name;
+		
+		String filename = this.userID + ".dat";
+		File user1File = new File(filename);
+		if (!user1File.exists() || user1File.length() == 0) {
+			System.out.println("No Previous User Data. Starting Fresh user file...");			
+		}else {
+			try {
+				this.loadFromFile(filename);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
+//		try {
+//			this.loadFromFile();
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+	}
+	
 	public TimeSlot getSpecDraft(String resName) throws Exception {
 		if (Drafts.containsKey(resName))
 			return Drafts.get(resName);
@@ -99,12 +123,38 @@ public class User implements Serializable {
 		}
 	}
 	
+//	@SuppressWarnings("unchecked")
+//	public void loadFromFile(String filename) throws ClassNotFoundException {
+//		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))){
+//			userID = (String)in.readObject();
+//			name = (String)in.readObject();
+//			Drafts = (LinkedHashMap<String, TimeSlot>) in.readObject();
+//			System.out.println("[User] Loading user from file: " + filename);
+//		}catch (FileNotFoundException e) {
+//			System.err.println("[User] Failed to find file: " + filename);
+//			e.printStackTrace();
+//		}catch (IOException | ClassNotFoundException e) {
+//			System.out.println("[User] IOException or Class not Found for file: " + filename);
+//			e.printStackTrace();
+//		}
+//	}
+	
 	@SuppressWarnings("unchecked")
 	public void loadFromFile(String filename) throws ClassNotFoundException {
+//		String filename = this.userID + ".dat";
+//		File user1File = new File(filename);
+//		if (!user1File.exists() || user1File.length() == 0) {
+//			System.out.println("No Previous User Data. Starting Fresh user file...");
+//			user1.setUserID("007");
+//			user1.setName("Samwise");
+//		}else {
+//			user1.loadFromFile("user1.dat");			
+//		}
+		
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))){
-			userID = (String)in.readObject();
-			name = (String)in.readObject();
-			Drafts = (LinkedHashMap<String, TimeSlot>) in.readObject();
+			this.userID = (String)in.readObject();
+			this.name = (String)in.readObject();
+			this.Drafts = (LinkedHashMap<String, TimeSlot>) in.readObject();
 			System.out.println("[User] Loading user from file: " + filename);
 		}catch (FileNotFoundException e) {
 			System.err.println("[User] Failed to find file: " + filename);
