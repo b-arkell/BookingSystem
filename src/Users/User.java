@@ -47,6 +47,11 @@ public class User implements Serializable {
 		return Drafts;
 	}
 	
+	public User() {
+		this.userID = "NA";
+		this.name = "NA";
+	}
+	
 	public User(String userID, String name) {
 		this.userID = userID;
 		this.name = name;
