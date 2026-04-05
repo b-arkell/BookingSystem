@@ -88,7 +88,7 @@ public class User implements Serializable {
 			System.out.println("[User] " + resName + " added to drafts.");
 		}
 		else
-			System.out.println("[User] " + resName + " not found in drafts");
+			System.out.println("[User] " + resName + " already in drafts");
 	}
 	
 	public void setDraft(IResource room, TimeSlot timeSlot) {
@@ -103,7 +103,7 @@ public class User implements Serializable {
 	}
 	
 	public void removeDraft(String resName) {
-		if(!Drafts.containsKey(resName)) {
+		if(Drafts.containsKey(resName)) {
 			Drafts.remove(resName);
 			System.out.println("[User] " + resName + " removed from drafts.");
 		}
