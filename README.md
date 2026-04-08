@@ -24,10 +24,48 @@ The factory pattern is instantiated by the following classes:
 - ResourceFactory: The concrete class that abstracts away the if-else ladder
 - The concrete classes that the factory actually builds
 
-State:
-- 
+State Pattern
 
-Strategy:
--
+The State Pattern is used to represent and manage the different states a resource can be in, allowing its behavior to change dynamically based on its current state.
+
+Components
+ResourceState (Interface)
+Defines the common behavior for all possible resource states.
+Concrete States
+AvailableState
+BookedState
+PendingState
+
+How It Works
+
+Each resource maintains a reference to a ResourceState object that represents its current state. Instead of using conditional logic (e.g., if or switch statements), state-specific behavior is delegated to the corresponding state class.
+
+This design makes it easy to:
+
+Add new states without modifying existing logic
+Keep state-related behavior organized and maintainable
+Ensure each state encapsulates its own rules and transitions
+
+Strategy Pattern
+
+The Strategy Pattern is used to define a family of booking behaviors, allowing different booking logic to be selected and applied at runtime.
+
+Components
+BookingStrategy (Interface)
+Defines a common method (e.g., book()) that all booking strategies must implement.
+Concrete Strategies
+RoomBookingStrategy
+LaptopBookingStrategy
+CalculatorStrategy
+
+How It Works
+
+Each strategy provides its own implementation of the book() method. While the current differences mainly involve how booking information is displayed, this structure allows for much more flexibility.
+
+This design is highly scalable and makes it easy to:
+
+Introduce new booking rules without changing existing code
+Customize behavior for different resource types
+Integrate with additional systems (e.g., calendar services, scheduling APIs) in the future
 
 
