@@ -3,6 +3,10 @@ package Booking;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +16,13 @@ import Scheduling.Scheduler;
 import Scheduling.TimeSlot;
 
 public class BookingTest {
+
+    @Test
+    void bservice_basic__isValid(){
+        BookingService b = new BookingService();
+        assertNotEquals(null, b);
+    }
+
     //bookingService tests
 
     //once again, a bit difficult to test since they just call other classes functions
@@ -35,16 +46,20 @@ public class BookingTest {
 
         b.BookResource(ir, "saggitarius", t);
 
+        
         //in order to actually test something here,
-        s.approve("senno", t);
-        //seeing if we can book the same thing on the same timeslot
-        boolean result = s.canApprove("senno", t);
+        ArrayList<TimeSlot> k = new ArrayList<TimeSlot>();
+        k.add(t);
+        Map<String, List<TimeSlot>> exp = new HashMap<>();
+        exp.put("senno", k);
 
-        assertEquals(false, result);
+        //seeing if it was succefully added to pending
+        assertEquals(exp, s.getPending());
     }
 
     //BookingStrategy tests
     //same issue, these unconditionally return true and call scheduler.addpending()
+    //the fact that bookingservice passed manes that this passes too lol
     @Test
     void bstrat_isValid(){
         Scheduler s = new Scheduler();

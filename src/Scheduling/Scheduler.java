@@ -23,6 +23,13 @@ public class Scheduler implements Serializable{
 	
 	private Map<String, List<TimeSlot>> approved = new HashMap<>();
 	private Map<String, List<TimeSlot>> pending = new HashMap<>();	
+
+	public Map<String, List<TimeSlot>> getPending(){
+		return pending;
+	}
+	public Map<String, List<TimeSlot>> getApproved(){
+		return approved;
+	}
 	
 	// User creates request -> adds to pending
 	public void addPending(String resourceId, TimeSlot slot) {
